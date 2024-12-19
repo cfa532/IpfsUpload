@@ -6,7 +6,7 @@ import hprose.client.HproseClient
 import java.util.Random
 
 fun uploadToIPFS(): String? {
-    val baseUrl = "http://192.168.5.4:8080"
+    val baseUrl = "http://125.229.161.122:8080"
     val appId = "heWgeGkeBX2gaENbIBS_Iy1mdTS"
 
     val client = HproseClient.create(baseUrl).useService(HproseService::class.java)
