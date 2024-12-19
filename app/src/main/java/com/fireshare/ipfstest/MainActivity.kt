@@ -46,40 +46,22 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ImageUploadComposable(modifier: Modifier
 ) {
-    var selectedImageUri by remember { mutableStateOf<Uri?>(null) }
     var uploadStatus by remember { mutableStateOf<String?>(null) }
-    val context = LocalContext.current
-    val launcher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.GetContent()
-    ) { uri: Uri? ->
-        selectedImageUri = uri
-    }
 
     Column(
         modifier = modifier.padding(8.dp),
     ) {
-        Button(onClick = { launcher.launch("image/*") }) {
-            Text("Select Image")
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        if (selectedImageUri != null) {
-            Text("Selected Image: ${selectedImageUri?.path}")
-            Spacer(modifier = Modifier.height(16.dp))
             Button(onClick = {
                 uploadStatus = "Uploading..."
-                val cid = uploadToIPFS(context, selectedImageUri!!)
+                val cid = uploadToIPFS()
                 uploadStatus = "Upload complete. CID: $cid"
             }) {
                 Text("Upload Image")
             }
 
             Spacer(modifier = Modifier.height(16.dp))
-
             uploadStatus?.let {
                 Text(it)
             }
-        }
     }
 }
