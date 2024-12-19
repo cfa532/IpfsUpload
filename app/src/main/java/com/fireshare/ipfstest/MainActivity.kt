@@ -69,7 +69,6 @@ fun ImageUploadComposable(modifier: Modifier
             Spacer(modifier = Modifier.height(16.dp))
             Button(onClick = {
                 uploadStatus = "Uploading..."
-                // TODO: Implement image upload logic here using selectedImageUri
                 val cid = uploadToIPFS(context, selectedImageUri!!)
                 uploadStatus = "Upload complete. CID: $cid"
             }) {
