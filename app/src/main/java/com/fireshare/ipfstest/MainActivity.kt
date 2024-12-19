@@ -56,7 +56,7 @@ fun ImageUploadComposable(modifier: Modifier
     }
 
     Column(
-        modifier = modifier
+        modifier = modifier.padding(8.dp),
     ) {
         Button(onClick = { launcher.launch("image/*") }) {
             Text("Select Image")
